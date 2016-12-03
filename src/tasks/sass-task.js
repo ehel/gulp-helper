@@ -6,8 +6,8 @@ var cssnano = require('gulp-cssnano');
 var gutil = require('gulp-util');
 
 function sassTask(gulp, options, env){
-    const isDev = !env || env == 'development';
-     gulp.task('sass', function () {
+    const isDev = env;
+     gulp.task('sass:compile', function () {
         return gulp.src(options.input)
             .pipe(isDev ? sourcemaps.init() : gutil.noop())
             .pipe(sass({precision:10}).on('error', sass.logError))
@@ -21,14 +21,16 @@ function sassTask(gulp, options, env){
             .pipe(isDev ? browserSync.stream({match: '**/*.css'}) : gutil.noop());
     });
 
-    gulp.task('sass:watch', ['sass'], (end) => {
+    gulp.task('sass:watch', ['sass:compile'], (end) => {
         if (!isDev) {
             end();
             return;
         }
-        browserSync.init({
-            server: "./"
-        });
+        if(!options.disableBrowserSync){
+            browserSync.init(options.browserSyncOptions ? options.browserSyncOptions : {
+                server: "./"
+            });
+        }
         if(!options.toWatch){
             var defaultToWatch = options.input.split('/');
             defaultToWatch[defaultToWatch.length - 1] = '**/*.{scss,sass,css}';
@@ -36,6 +38,12 @@ function sassTask(gulp, options, env){
         }
         gulp.watch(options.toWatch ? options.toWatch : defaultToWatch, ['sass']);
     });
+    if(isDev){
+        gulp.task('sass', ['sass:watch']);
+    }
+    else{
+        gulp.task('sass', ['sass']);
+    }
 }
 
 module.exports = sassTask;
