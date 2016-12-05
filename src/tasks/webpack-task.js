@@ -5,7 +5,7 @@ var webpackOptions = require('./webpack.config.js');
 
 function webpackTask(gulp, options, env){
 
-    const isDevelopment = !env || env == 'development';
+    const isDevelopment = env;
     const handleWebpackOutput = (err, stats) => {
         if (err) throw new gutil.PluginError('webpack', err);
 
@@ -14,17 +14,15 @@ function webpackTask(gulp, options, env){
             chunks: false
         }));
     };
-    const getWebpack = (options) => {
-        return webpack(webpackOptions(options));
+    const getWebpack = (options, isDev) => {
+        return webpack(webpackOptions(options, isDev));
     };
-
     gulp.task('webpack', (end) => {
         if (webpackOptions(options).length === 0) {
             end();
             return;
         }
-
-        const wp = getWebpack(options);
+        const wp = getWebpack(options, isDevelopment);
         var firstBuild = false;
         if(isDevelopment){
             wp.watch({
@@ -45,7 +43,7 @@ function webpackTask(gulp, options, env){
 
     });
     gulp.task('webpack:watch', (end) => {
-        const wp = getWebpack(options);
+        const wp = getWebpack(options, isDevelopment);
         wp.watch({
             aggregateTimeout: 300
         }, (err, stats) => {

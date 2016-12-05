@@ -8,7 +8,7 @@ module.exports = {
         for(var key in options.tasks){
             if (!options.tasks.hasOwnProperty(key)) continue;
             tasks.push(key);
-            require('./'+ key + '-task')(gulp,options.tasks[key], env);
+            require('./tasks'+ key + '-task')(gulp,options.tasks[key], env);
         }
         gulp.task('default', tasks);
     }
