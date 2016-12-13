@@ -5,11 +5,11 @@ module.exports =  {
     tasks: {
         webpack:{
             entry: {
-                app: './js/app',
+                app: './src/js/app',
             },
             output:{
-                path: './js',
-                publicPath: '/js/',
+                path: './assets/js',
+                publicPath: '/assets/js/',
             },
             loadersConfiguration: {
                 vue: {
@@ -27,8 +27,8 @@ module.exports =  {
             extractTextPluginPath: "./../css/components.css"
         },
         sass:{
-            input: './sass/app.scss',
-            output: './css',
+            input: './src/sass/app.scss',
+            output: './assets/css',
         }
     }
 };
