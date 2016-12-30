@@ -12,6 +12,6 @@
   "author": "Valentin Sirbu",
   "license": "ISC",
   "dependencies": {
-    "gulp-build-helper": "^0.1.0"
+    "gulp-build-helper": "^0.11.0"
   }
 }
