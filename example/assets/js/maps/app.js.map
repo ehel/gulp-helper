@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/js/app.js"],"names":["console","log"],"mappings":";;;;;;;AAAAA,SAAQC,GAAR,CAAY,cAAZ,E","file":"app.js","sourcesContent":["console.log('Hellow World');\n\n\n// WEBPACK FOOTER //\n// ./src/js/app.js"],"sourceRoot":""}
