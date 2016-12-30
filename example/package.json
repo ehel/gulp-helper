@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.0.0",
+  "version": "0.11.0",
   "description": "gulp helper example",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,8 @@
     "example"
   ],
   "author": "Valentin Sirbu",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "gulp-build-helper": "^0.1.0"
+  }
 }
