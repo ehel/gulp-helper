@@ -1,5 +1,5 @@
 {
-  "name": "gulp-helper",
+  "name": "gulp-build-helper",
   "version": "0.1.0",
   "description": "Collection of gulp tasks for compilling assets.",
   "main": "src/index.js",
@@ -22,7 +22,7 @@
     "url": "https://github.com/ehel/gulp-helper/issues"
   },
   "homepage": "https://github.com/ehel/gulp-helper#readme",
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
     "babel-core": "^6.18.0",
